@@ -1,32 +1,31 @@
 package com.wuyson.guidedemos.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
 import androidx.window.layout.WindowMetricsCalculator
-import com.wuyson.guidedemos.App
-import com.wuyson.guidedemos.app.AppDataManager
-import com.wuyson.guidedemos.adapter.MainItemAdapter
 import com.wuyson.guidedemos.databinding.ActivityMainBinding
 import com.wuyson.guidedemos.service.MyLifecycleService
 import com.wuyson.guidedemos.ui.global.FirstActivity
-import com.wuyson.guidedemos.ui.global.SecondActivity
 import com.wuyson.guidedemos.viewmodel.CustomFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * @author : 𝑾𝒖 𝒀𝒂𝒏𝒔
+ * @date : 2023/8/25 - 13:52
+ * @description:
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var windowInfoTracker: WindowInfoTracker
 
-    //    private lateinit var viewModel:MainViewModel
     private val viewModel by viewModels<MainViewModel> { CustomFactory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,21 +33,14 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        viewModel = ViewModelProvider(this,CustomFactory())[MainViewModel::class.java]
 
         windowInfoTracker = WindowInfoTracker.getOrCreate(this)
         obtainWindowMetrics()
         onWindowLayoutInfoChange()
 
-        val datas = mutableListOf(
-            "TextView",
-            "Button"
-        )
-
-        binding.rvData.apply {
-            adapter = MainItemAdapter(datas)
+        viewModel.test.observe(this) {
+            binding.tvTest.text = it
         }
-
         startService(Intent(this, MyLifecycleService::class.java))
 
         binding.btnOpenAppDemo.setOnClickListener {

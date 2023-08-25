@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(savedStateHandle: SavedStateHandle): ViewModel() {
 
-    val listData = MutableLiveData("初始化")
+    val test = MutableLiveData("初始化")
 
     fun getData(){
         viewModelScope.launch {

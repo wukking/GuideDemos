@@ -1,11 +1,11 @@
-package com.wuyson.guidedemos.app
+package com.wuyson.guidedemos.viewmodel
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 
-class AppViewModel(application: Application) : AndroidViewModel(application) {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
     var count = 0
 
     val test = MutableLiveData("app-test")

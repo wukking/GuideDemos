@@ -6,15 +6,14 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.wuyson.guidedemos.app.AppViewModel
 import com.wuyson.guidedemos.ui.MainViewModel
 
 class CustomFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
         return when (modelClass) {
-            AppViewModel::class.java-> {
+            HomeViewModel::class.java-> {
                 val application = checkNotNull(extras[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY])
-                AppViewModel(application)
+                HomeViewModel(application)
             }
             MainViewModel::class.java -> {
                 val savedStateHandle = extras.createSavedStateHandle()
@@ -30,7 +29,7 @@ val customFactory = viewModelFactory {
     initializer {
         // Get the Application object from extras provided to the lambda
         val application = checkNotNull(get(ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY))
-        AppViewModel(application)
+        HomeViewModel(application)
     }
     initializer {
         val savedStateHandle = createSavedStateHandle()
