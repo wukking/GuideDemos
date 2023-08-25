@@ -6,7 +6,7 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.wuyson.guidedemos.AppViewModel
+import com.wuyson.guidedemos.app.AppViewModel
 import com.wuyson.guidedemos.ui.MainViewModel
 
 class CustomFactory : ViewModelProvider.Factory {

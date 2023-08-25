@@ -38,6 +38,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -72,7 +73,9 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.service)
     implementation(libs.lifecycle.process)
-    kapt(libs.lifecycle.compiler)
+//    kapt(libs.lifecycle.compiler)
+
+    debugImplementation(libs.leakcanary.android)
 //    implementation ("com.jakewharton:butterknife:10.2.3")
 //    annotationProcessor("com.jakewharton:butterknife-compiler:10.2.3")
 //    implementation("com.google.android:android:4.2.2")

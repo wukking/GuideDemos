@@ -25,7 +25,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ButterActivity"/>
+        <activity android:name=".ui.global.FirstActivity"/>
+        <activity android:name=".ui.global.SecondActivity"/>
         <service android:name=".service.MyLifecycleService" />
     </application>
 

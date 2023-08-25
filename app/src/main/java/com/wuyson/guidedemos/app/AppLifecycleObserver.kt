@@ -1,4 +1,4 @@
-package com.wuyson.guidedemos
+package com.wuyson.guidedemos.app
 
 import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver

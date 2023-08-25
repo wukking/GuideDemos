@@ -48,4 +48,14 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+
+
+
+    <Button
+        android:id="@+id/btn_open_app_demo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开全局VM Demo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

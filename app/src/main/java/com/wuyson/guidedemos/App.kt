@@ -2,11 +2,16 @@ package com.wuyson.guidedemos
 
 import android.app.Application
 import androidx.lifecycle.ProcessLifecycleOwner
-import androidx.lifecycle.ViewModelStore
-import androidx.lifecycle.ViewModelStoreOwner
+import androidx.lifecycle.ViewModelProvider
+import com.wuyson.guidedemos.app.AppLevelViewModel
+import com.wuyson.guidedemos.app.AppLifecycleObserver
 import com.wuyson.guidedemos.viewmodel.CustomFactory
 
-class App : Application(), ViewModelStoreOwner {
+class App : Application(){
+    val appLevelViewModel by lazy {
+        ViewModelProvider.AndroidViewModelFactory.getInstance(this).create(AppLevelViewModel::class.java)
+    }
+
     override fun onCreate() {
         super.onCreate()
         context = this
@@ -19,11 +24,6 @@ class App : Application(), ViewModelStoreOwner {
         @JvmStatic
         fun getAPP(): App = context
     }
-
-    //实现Application全局的ViewModel
-    //直接用ViewModelStore()创建有待商榷
-    private val viewModelStore = ViewModelStore()
-    override fun getViewModelStore() = viewModelStore
 
     //自定义Factory
     private lateinit var customFactory: CustomFactory

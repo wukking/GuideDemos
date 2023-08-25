@@ -6,18 +6,18 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
 import androidx.window.layout.WindowMetricsCalculator
 import com.wuyson.guidedemos.App
-import com.wuyson.guidedemos.AppViewModel
+import com.wuyson.guidedemos.app.AppDataManager
 import com.wuyson.guidedemos.adapter.MainItemAdapter
 import com.wuyson.guidedemos.databinding.ActivityMainBinding
 import com.wuyson.guidedemos.service.MyLifecycleService
+import com.wuyson.guidedemos.ui.global.FirstActivity
+import com.wuyson.guidedemos.ui.global.SecondActivity
 import com.wuyson.guidedemos.viewmodel.CustomFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,17 +35,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 //        viewModel = ViewModelProvider(this,CustomFactory())[MainViewModel::class.java]
-        val appViewModel = ViewModelProvider(
-            App.getAPP(),
-            ViewModelProvider.AndroidViewModelFactory(application)
-        )[AppViewModel::class.java]
-        appViewModel.test.observe(this) {
-            Log.e("TAG", "AppViewModel: 数据：$it")
-        }
-
-        viewModel.listData.observe(this) {
-            Log.e("TAG", "onCreate: $it")
-        }
 
         windowInfoTracker = WindowInfoTracker.getOrCreate(this)
         obtainWindowMetrics()
@@ -61,6 +50,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         startService(Intent(this, MyLifecycleService::class.java))
+
+        binding.btnOpenAppDemo.setOnClickListener {
+            startActivity(Intent(this, FirstActivity::class.java))
+        }
     }
 
     //Window Manager Code [没有折叠屏，还没测]
