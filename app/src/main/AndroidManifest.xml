@@ -28,6 +28,9 @@
         <activity android:name=".ui.global.FirstActivity"/>
         <activity android:name=".ui.global.SecondActivity"/>
         <service android:name=".service.MyLifecycleService" />
+
+        <activity android:name=".ui.brv.BRVActivity"/>
+
     </application>
 
 </manifest>

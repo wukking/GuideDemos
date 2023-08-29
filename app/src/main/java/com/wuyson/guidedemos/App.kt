@@ -3,6 +3,9 @@ package com.wuyson.guidedemos
 import android.app.Application
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.lifecycle.ViewModelProvider
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.ClassicsHeader
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.wuyson.guidedemos.app.AppLevelViewModel
 import com.wuyson.guidedemos.app.AppLifecycleObserver
 import com.wuyson.guidedemos.viewmodel.CustomFactory
@@ -15,6 +18,10 @@ class App : Application(){
     override fun onCreate() {
         super.onCreate()
         context = this
+        SmartRefreshLayout.setDefaultRefreshInitializer { context, layout ->
+            layout.setRefreshHeader(ClassicsHeader(context))
+            layout.setRefreshFooter(ClassicsFooter(context))
+        }
         ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleObserver())
     }
 

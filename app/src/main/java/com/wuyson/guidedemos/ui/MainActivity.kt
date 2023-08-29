@@ -12,6 +12,7 @@ import androidx.window.layout.WindowLayoutInfo
 import androidx.window.layout.WindowMetricsCalculator
 import com.wuyson.guidedemos.databinding.ActivityMainBinding
 import com.wuyson.guidedemos.service.MyLifecycleService
+import com.wuyson.guidedemos.ui.brv.BRVActivity
 import com.wuyson.guidedemos.ui.global.FirstActivity
 import com.wuyson.guidedemos.viewmodel.CustomFactory
 import kotlinx.coroutines.Dispatchers
@@ -45,6 +46,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnOpenAppDemo.setOnClickListener {
             startActivity(Intent(this, FirstActivity::class.java))
+        }
+
+        binding.btnOpenBrv.setOnClickListener {
+            startActivity(Intent(this,BRVActivity::class.java))
         }
     }
 
