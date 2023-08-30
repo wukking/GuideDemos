@@ -2,7 +2,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.ksp)
     id("kotlin-kapt")
+
 }
 
 android {
@@ -73,7 +75,7 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.service)
     implementation(libs.lifecycle.process)
-//    kapt(libs.lifecycle.compiler)
+//    ksp(libs.lifecycle.compiler)
     implementation( libs.brv)
 
     implementation  (libs.smart.refresh.layout.kernel)     //核心必须依赖

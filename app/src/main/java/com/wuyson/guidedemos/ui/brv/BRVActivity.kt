@@ -7,8 +7,10 @@ import com.drake.brv.utils.linear
 import com.drake.brv.utils.setup
 import com.wuyson.guidedemos.R
 import com.wuyson.guidedemos.databinding.ActivityBrvBinding
+import com.wuyson.guidedemos.databinding.ItemSimpleList1Binding
 import com.wuyson.guidedemos.databinding.ItemSimpleListBinding
 import com.wuyson.guidedemos.ui.brv.bean.SimpleModel
+import com.wuyson.guidedemos.ui.brv.bean.StoreModel
 
 /**
  * @author : 𝑾𝒖 𝒀𝒂𝒏𝒔
@@ -17,7 +19,7 @@ import com.wuyson.guidedemos.ui.brv.bean.SimpleModel
  */
 class BRVActivity : AppCompatActivity() {
 
-    private lateinit var binding:ActivityBrvBinding
+    private lateinit var binding: ActivityBrvBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,24 +29,43 @@ class BRVActivity : AppCompatActivity() {
         simpleDemo()
     }
 
-    private fun getData():List<SimpleModel>{
-        val data = mutableListOf<SimpleModel>()
-        for (i in 1..10){
+    private fun getData(): List<Any> {
+        val data = mutableListOf<Any>()
+        for (i in 1..10) {
+            if (i == 3) {
+                data.add(StoreModel("这是餐馆"))
+            }
             data.add(SimpleModel("这是第${i}条数据"))
         }
         return data
     }
 
-    private fun simpleDemo(){
+    private fun simpleDemo() {
+        //getBinding: 获取Binding
+        //getModel: 获取当前Data
         binding.rvData.linear().setup {
             addType<SimpleModel>(R.layout.item_simple_list)
+            addType<StoreModel>(R.layout.item_simple_list_1)
             onBind {
-                val binding = getBinding<ItemSimpleListBinding>()
-                val data = getModel<SimpleModel>()
-                binding.tvName.text = data.name
+                if (_data is SimpleModel) {
+                    val binding = getBinding<ItemSimpleListBinding>()
+                    val simpleModel = getModel<SimpleModel>()
+                    binding.tvName.text = simpleModel.name
+                } else if (_data is StoreModel) {
+                    val storeBinding = getBinding<ItemSimpleList1Binding>()
+                    val store = getModel<StoreModel>()
+                    storeBinding.tvName.text = store.name
+                }
             }
-            onClick(R.id.tv_name){
-                Toast.makeText(this@BRVActivity, getModel<SimpleModel>().name, Toast.LENGTH_SHORT).show()
+            onClick(R.id.tv_name) {
+                if (_data is SimpleModel) {
+                    val data = getModel<SimpleModel>()
+                    Toast.makeText(this@BRVActivity, data.name, Toast.LENGTH_SHORT).show()
+                } else if (_data is StoreModel) {
+                    val data = getModel<StoreModel>()
+                    Toast.makeText(this@BRVActivity, data.name, Toast.LENGTH_SHORT).show()
+                }
+
             }
         }.models = getData()
     }
