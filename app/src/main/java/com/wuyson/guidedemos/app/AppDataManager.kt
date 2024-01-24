@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 /**
  * App全局data
  */
+@Deprecated("")
 object AppDataManager {
     private var _count = 0
     private val _data = MutableLiveData<String>()

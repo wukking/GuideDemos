@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 
+@Deprecated("")
 class MyObserver : DefaultLifecycleObserver {
     private val TAG = "MyObserver"
 

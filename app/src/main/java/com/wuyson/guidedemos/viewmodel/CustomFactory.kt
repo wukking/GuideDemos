@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.wuyson.guidedemos.ui.MainViewModel
 
+@Deprecated("")
 class CustomFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
         return when (modelClass) {
@@ -23,6 +24,7 @@ class CustomFactory : ViewModelProvider.Factory {
         } as T
     }
 }
+@Deprecated("")
 // or
 val customFactory = viewModelFactory {
     // The return type of the lambda automatically sets what class this lambda handles

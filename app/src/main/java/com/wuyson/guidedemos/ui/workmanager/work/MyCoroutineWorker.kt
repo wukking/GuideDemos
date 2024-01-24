@@ -6,7 +6,7 @@ import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
 import com.wuyson.guidedemos.R
 import com.wuyson.guidedemos.util.createNotification
-
+@Deprecated("")
 class MyCoroutineWorker(context: Context, workerParameters: WorkerParameters) :
     CoroutineWorker(context, workerParameters) {
 

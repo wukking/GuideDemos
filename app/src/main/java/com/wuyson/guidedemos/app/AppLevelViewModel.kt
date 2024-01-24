@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
  * @date : 2023/8/25 - 9:30
  * @description:
  */
+@Deprecated("")
 class AppLevelViewModel : ViewModel() {
     private var _count = 0
     private val _currentText = MutableLiveData("app-test")

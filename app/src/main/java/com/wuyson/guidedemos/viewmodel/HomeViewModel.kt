@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 
+@Deprecated("")
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     var count = 0
 

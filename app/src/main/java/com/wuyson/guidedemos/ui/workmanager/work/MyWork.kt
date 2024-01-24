@@ -6,7 +6,7 @@ import androidx.work.ForegroundInfo
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.google.common.util.concurrent.ListenableFuture
-
+@Deprecated("")
 class MyWork(context: Context, workerParameters: WorkerParameters) :
     Worker(context, workerParameters) {
     override fun doWork(): Result {

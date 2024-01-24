@@ -11,6 +11,7 @@ import androidx.work.WorkManager
 import com.wuyson.guidedemos.databinding.ActivityWorkManagerBinding
 import com.wuyson.guidedemos.ui.workmanager.work.MyWork
 
+@Deprecated("")
 class WorkManagerActivity : AppCompatActivity() {
     private lateinit var binding:ActivityWorkManagerBinding
 

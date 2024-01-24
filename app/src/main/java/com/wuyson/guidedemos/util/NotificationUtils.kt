@@ -32,6 +32,7 @@ import java.util.UUID
 /**
  * Create the notification and required channel (O+) for running work in a foreground service.
  */
+@Deprecated("")
 fun createNotification(context: Context, workRequestId: UUID, notificationTitle: String): Notification {
     val channelId = context.getString(R.string.notification_channel_id)
     val cancelText = context.getString(R.string.cancel_processing)

@@ -3,6 +3,7 @@ package com.wuyson.guidedemos.service
 import android.util.Log
 import androidx.lifecycle.LifecycleService
 
+@Deprecated("")
 class MyLifecycleService:LifecycleService() {
     private lateinit var myObserver:MyObserver
 
